@@ -53,10 +53,12 @@ userSchema.pre('save', async function (next) {
   }
   
   try {
-    const salt = await bcrypt.genSalt(10);
+    // Use a lower salt round for better compatibility
+    const salt = await bcrypt.genSalt(8);
     this.password = await bcrypt.hash(this.password, salt);
     next();
   } catch (error) {
+    console.error('Error hashing password:', error);
     next(error);
   }
 });
