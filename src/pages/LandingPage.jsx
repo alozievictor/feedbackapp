@@ -88,18 +88,18 @@ const LandingPage = () => {
   ];
 
   return (
-    <div className="bg-white min-h-screen border border-red-500">
+    <div className="bg-white min-h-screen">
       {/* Navigation Bar */}
       <header className="fixed w-full bg-white/95 backdrop-blur-md z-50 shadow-sm border-b border-gray-100">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 md:h-20">
             <div className="flex items-center">
               <div className="flex items-center space-x-3">
-                <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-indigo-600 to-purple-600 flex items-center justify-center shadow-lg">
+                <div className="h-10 w-10 rounded-xl bg-yellow-600 flex items-center justify-center shadow-lg">
                   <span className="text-white font-bold text-lg">R</span>
                 </div>
                 <Link to="/" className="text-white text-xl font-bold">
-                  <span className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                  <span className="text-2xl font-bold text-yellow-600">
                     Rivong
                   </span>
                 </Link>
@@ -110,25 +110,19 @@ const LandingPage = () => {
             <nav className="hidden md:flex items-center space-x-8">
               <a
                 href="#features"
-                className="text-sm font-medium text-gray-700 hover:text-indigo-600 transition-colors"
+                className="text-sm font-medium text-gray-700 hover:text-yellow-600 transition-colors"
               >
                 Features
               </a>
               <a
-                href="#pricing"
-                className="text-sm font-medium text-gray-700 hover:text-indigo-600 transition-colors"
-              >
-                Pricing
-              </a>
-              <a
                 href="#testimonials"
-                className="text-sm font-medium text-gray-700 hover:text-indigo-600 transition-colors"
+                className="text-sm font-medium text-gray-700 hover:text-yellow-600 transition-colors"
               >
                 Testimonials
               </a>
               <a
                 href="#about"
-                className="text-sm font-medium text-gray-700 hover:text-indigo-600 transition-colors"
+                className="text-sm font-medium text-gray-700 hover:text-yellow-600 transition-colors"
               >
                 About
               </a>
@@ -136,15 +130,15 @@ const LandingPage = () => {
 
             <div className="flex items-center gap-x-4 md:gap-x-6">
               {isAuthenticated ? (
-                <button className="rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 px-6 py-3 text-sm font-medium text-white hover:shadow-lg hover:scale-105 transition-all duration-200">
+                <button className="rounded-xl bg-gradient-to-r bg-yellow-600 px-6 py-3 text-sm font-medium text-white hover:shadow-lg hover:scale-105 transition-all duration-200">
                   Dashboard
                 </button>
               ) : (
                 <>
-                  <Link to="/login" className="hidden md:block text-sm font-medium text-gray-700 hover:text-indigo-600 transition-colors">
+                  <Link to="/login" className="hidden md:block text-sm font-medium text-gray-700 hover:text-yellow-600 transition-colors">
                     Log in
                   </Link>
-                  <Link to="/register" className="rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 px-6 py-3 text-sm font-medium text-white hover:shadow-lg hover:scale-105 transition-all duration-200">
+                  <Link to="/register" className="rounded-xl bg-gradient-to-r bg-black px-6 py-3 text-sm font-medium text-white hover:shadow-lg hover:scale-105 transition-all duration-200">
                     Sign up
                   </Link>
                 </>
@@ -170,29 +164,23 @@ const LandingPage = () => {
               <div className="flex flex-col space-y-4">
                 <a
                   href="#features"
-                  className="text-sm font-medium text-gray-700 hover:text-indigo-600 transition-colors"
+                  className="text-sm font-medium text-gray-700 hover:text-yellow-600 transition-colors"
                 >
                   Features
                 </a>
                 <a
-                  href="#pricing"
-                  className="text-sm font-medium text-gray-700 hover:text-indigo-600 transition-colors"
-                >
-                  Pricing
-                </a>
-                <a
                   href="#testimonials"
-                  className="text-sm font-medium text-gray-700 hover:text-indigo-600 transition-colors"
+                  className="text-sm font-medium text-gray-700 hover:text-yellow-600 transition-colors"
                 >
                   Testimonials
                 </a>
                 <a
                   href="#about"
-                  className="text-sm font-medium text-gray-700 hover:text-indigo-600 transition-colors"
+                  className="text-sm font-medium text-gray-700 hover:text-yellow-600 transition-colors"
                 >
                   About
                 </a>
-                <button className="w-full text-left text-sm font-medium text-gray-700 hover:text-indigo-600 transition-colors">
+                <button className="w-full text-left text-sm font-medium text-gray-700 hover:text-yellow-600 transition-colors">
                   Log in
                 </button>
               </div>
@@ -202,18 +190,18 @@ const LandingPage = () => {
       </header>
 
       {/* Hero Section */}
-      <section className="pt-20 md:pt-32 pb-16 md:pb-24 bg-gradient-to-br from-indigo-50 via-white to-purple-50">
+      <section className="pt-20 md:pt-32 pb-16 md:pb-24 bg-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div className="text-center lg:text-left">
-              <div className="inline-flex items-center px-4 py-2 rounded-full bg-indigo-100 text-indigo-700 text-sm font-medium mb-6">
+              <div className="inline-flex items-center px-4 py-2 rounded-full bg-yellow-100 text-yellow-700 text-sm font-medium mb-6">
                 <Zap className="w-4 h-4 mr-2" />
                 Streamline Your Creative Process
               </div>
 
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
                 Welcome to{" "}
-                <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                <span className="text-yellow-600">
                   Rivong Feedback
                 </span>
               </h1>
@@ -226,16 +214,13 @@ const LandingPage = () => {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <button className="group rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 px-8 py-4 text-lg font-medium text-white hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center justify-center">
+                <button className="group rounded-xl bg-black px-8 py-4 text-lg font-medium text-white hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center justify-center">
                   Get Started
                   <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </button>
-                <button className="rounded-xl border-2 border-gray-300 px-8 py-4 text-lg font-medium text-gray-700 hover:border-indigo-600 hover:text-indigo-600 transition-all duration-200">
-                  Watch Demo
-                </button>
               </div>
 
-              <div className="mt-12 flex items-center justify-center lg:justify-start space-x-6 text-sm text-gray-500">
+              {/* <div className="mt-12 flex items-center justify-center lg:justify-start space-x-6 text-sm text-gray-500">
                 <div className="flex items-center">
                   <Shield className="w-4 h-4 mr-2" />
                   Secure & Private
@@ -248,15 +233,15 @@ const LandingPage = () => {
                   <Users className="w-4 h-4 mr-2" />
                   Team Collaboration
                 </div>
-              </div>
+              </div> */}
             </div>
 
             <div className="relative">
-              <div className="relative bg-gradient-to-br from-indigo-100 to-purple-100 rounded-3xl p-8 shadow-2xl">
+              <div className="relative rounded-3xl p-8 shadow-2xl">
                 <div className="bg-white rounded-2xl p-6 shadow-lg">
                   <div className="flex items-center justify-between mb-6">
                     <div className="flex items-center space-x-3">
-                      <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center">
+                      <div className="w-8 h-8 bg-yellow-600 rounded-lg flex items-center justify-center">
                         <span className="text-white font-bold text-sm">R</span>
                       </div>
                       <span className="font-semibold text-gray-900">
@@ -274,10 +259,10 @@ const LandingPage = () => {
                     <div className="h-4 bg-gray-200 rounded-lg w-3/4"></div>
                     <div className="h-4 bg-gray-200 rounded-lg w-1/2"></div>
                     <div className="grid grid-cols-2 gap-4 mt-6">
-                      <div className="h-20 bg-gradient-to-br from-indigo-50 to-indigo-100 rounded-lg flex items-center justify-center">
-                        <FileText className="w-8 h-8 text-indigo-600" />
+                      <div className="h-20 bg-yellow-50 rounded-lg flex items-center justify-center">
+                        <FileText className="w-8 h-8 text-yellow-600" />
                       </div>
-                      <div className="h-20 bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg flex items-center justify-center">
+                      <div className="h-20 bg-purple-50 rounded-lg flex items-center justify-center">
                         <MessageSquare className="w-8 h-8 text-purple-600" />
                       </div>
                     </div>
@@ -299,7 +284,7 @@ const LandingPage = () => {
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Empowering Clients with{" "}
-              <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+              <span className="text-yellow-600">
                 Rivong Feedback
               </span>
             </h2>
@@ -316,7 +301,7 @@ const LandingPage = () => {
                 key={index}
                 className="group p-8 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer"
               >
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 text-white mb-6 group-hover:scale-110 transition-transform duration-300">
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-yellow-500 text-white mb-6 group-hover:scale-110 transition-transform duration-300">
                   {feature.icon}
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-4">
@@ -334,7 +319,7 @@ const LandingPage = () => {
       {/* Testimonials Section */}
       <section
         id="testimonials"
-        className="py-16 md:py-24 bg-gradient-to-br from-indigo-50 via-white to-purple-50"
+        className="py-16 md:py-24 bg-yellow-50"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
@@ -364,7 +349,7 @@ const LandingPage = () => {
                   "{testimonial.content}"
                 </p>
                 <div className="flex items-center">
-                  <div className="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center text-white font-semibold mr-4">
+                  <div className="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center text-white font-semibold mr-4">
                     {testimonial.name
                       .split(" ")
                       .map((n) => n[0])
@@ -386,24 +371,22 @@ const LandingPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-r from-indigo-600 to-purple-600">
+      <section className="py-16 md:py-24 bg-black">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
               Ready to Transform Your Creative Process?
             </h2>
-            <p className="text-xl text-indigo-100 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-yellow-100 mb-8 max-w-2xl mx-auto">
               Join thousands of creative professionals who have streamlined
               their workflow with Rivong
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="group rounded-xl bg-white px-8 py-4 text-lg font-medium text-indigo-600 hover:bg-gray-50 hover:scale-105 transition-all duration-300 flex items-center justify-center">
-                Start Free Trial
+              <button className="group rounded-xl bg-white px-8 py-4 text-lg font-medium text-yellow-600 hover:bg-gray-50 hover:scale-105 transition-all duration-300 flex items-center justify-center">
+                Get Started
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>
-              <button className="rounded-xl border-2 border-white px-8 py-4 text-lg font-medium text-white hover:bg-white hover:text-indigo-600 transition-all duration-200">
-                Schedule Demo
-              </button>
+            
             </div>
           </div>
         </div>
@@ -415,10 +398,10 @@ const LandingPage = () => {
           <div className="grid md:grid-cols-4 gap-8">
             <div className="md:col-span-2">
               <div className="flex items-center space-x-3 mb-4">
-                <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-indigo-600 to-purple-600 flex items-center justify-center">
+                <div className="h-10 w-10 rounded-xl bg-yellow-600 flex items-center justify-center">
                   <span className="text-white font-bold text-lg">R</span>
                 </div>
-                <span className="text-2xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
+                <span className="text-2xl font-bold text-yellow-400">
                   Rivong
                 </span>
               </div>

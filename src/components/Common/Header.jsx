@@ -9,14 +9,14 @@ const Header = () => {
   const dispatch = useDispatch();
 
   return (
-    <nav className="bg-indigo-800">
+    <nav className="bg-black">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
             {/* Mobile menu button */}
             <button
               type="button"
-              className="relative inline-flex items-center justify-center rounded-md p-2 text-indigo-200 hover:bg-indigo-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+              className="relative inline-flex items-center justify-center rounded-md p-2 text-indigo-200 hover:bg-black hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               <span className="absolute -inset-0.5"></span>
@@ -40,13 +40,13 @@ const Header = () => {
                   <>
                     <Link
                       to="/dashboard"
-                      className="text-white hover:bg-indigo-500 rounded-md px-3 py-2 text-sm font-medium"
+                      className="text-white hover:bg-black rounded-md px-3 py-2 text-sm font-medium"
                     >
                       Dashboard
                     </Link>
                     <Link
                       to="/projects"
-                      className="text-indigo-200 hover:bg-indigo-500 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                      className="text-indigo-200 hover:bg-black hover:text-white rounded-md px-3 py-2 text-sm font-medium"
                     >
                       Projects
                     </Link>
@@ -78,13 +78,13 @@ const Header = () => {
               <div className="flex space-x-4">
                 <Link
                   to="/login"
-                  className="text-indigo-200 hover:bg-indigo-500 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                  className="text-indigo-200 hover:bg-gray-500 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
                 >
                   Login
                 </Link>
                 <Link
                   to="/register"
-                  className="bg-indigo-500 text-white rounded-md px-3 py-2 text-sm font-medium"
+                  className="bg-black text-white rounded-md px-3 py-2 text-sm font-medium"
                 >
                   Register
                 </Link>
@@ -102,14 +102,14 @@ const Header = () => {
               <>
                 <Link
                   to="/dashboard"
-                  className="text-white hover:bg-indigo-500 block rounded-md px-3 py-2 text-base font-medium"
+                  className="text-white hover:bg-black block rounded-md px-3 py-2 text-base font-medium"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Dashboard
                 </Link>
                 <Link
                   to="/projects"
-                  className="text-indigo-200 hover:bg-indigo-500 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+                  className="text-indigo-200 hover:bg-black hover:text-white block rounded-md px-3 py-2 text-base font-medium"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Projects
@@ -120,14 +120,14 @@ const Header = () => {
               <>
                 <Link
                   to="/login"
-                  className="text-indigo-200 hover:bg-indigo-500 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+                  className="text-indigo-200 hover:bg-black hover:text-white block rounded-md px-3 py-2 text-base font-medium"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Login
                 </Link>
                 <Link
                   to="/register"
-                  className="text-indigo-200 hover:bg-indigo-500 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+                  className="text-indigo-200 hover:bg-black hover:text-white block rounded-md px-3 py-2 text-base font-medium"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Register

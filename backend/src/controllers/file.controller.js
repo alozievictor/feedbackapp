@@ -85,8 +85,9 @@ exports.uploadFile = async (req, res, next) => {
     
     console.log('Project found:', project.name);
     
-    // Get the file URL (for local storage)
-    const fileUrl = `/uploads/${path.basename(req.file.path)}`;
+    // Get the file URL (with full server URL)
+    const serverUrl = process.env.SERVER_URL || 'http://localhost:5000';
+    const fileUrl = `${serverUrl}/uploads/${path.basename(req.file.path)}`;
 
     // Create file record
     const file = await File.create({

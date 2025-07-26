@@ -90,7 +90,7 @@ const Login = () => {
             <button
               type="submit"
               disabled={isLoading}
-              className="group relative flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-xs sm:text-sm font-semibold text-white hover:bg-indigo-500 focus-visible:outline-indigo-600 focus-visible:outline-offset-2 disabled:bg-indigo-400"
+              className="group relative flex w-full justify-center rounded-md bg-black px-3 py-2 text-xs sm:text-sm font-semibold text-white hover:bg-gray-700 focus-visible:outline-indigo-600 focus-visible:outline-offset-2 disabled:bg-indigo-400"
             >
               {isLoading ? 'Signing in...' : 'Sign in'}
             </button>
@@ -99,7 +99,7 @@ const Login = () => {
           <div className="text-center text-xs sm:text-sm mt-4">
             <p>
               Don't have an account?{' '}
-              <a href="/register" className="font-medium text-indigo-600 hover:text-indigo-500">
+              <a href="/register" className="font-medium text-yellow-600 hover:text-yellow-500">
                 Register
               </a>
             </p>
