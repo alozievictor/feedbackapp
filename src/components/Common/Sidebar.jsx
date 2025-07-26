@@ -71,14 +71,14 @@ const Sidebar = () => {
   return (
     <div className="bg-indigo-800 text-white w-64 min-h-screen p-4 hidden md:block">
       <div className="mb-8">
-        <h2 className="text-xl font-bold mb-6 text-center">
-          {isAdmin ? 'Admin Panel' : 'Client Portal'}
+        <h2 className="text-xl font-bold mb-6">
+          {isAdmin ? 'Rivong Admin' : 'Client Portal'}
         </h2>
-        <div className="px-4 py-3 bg-indigo-700 rounded-lg mb-6">
+        {/* <div className="px-4 py-3 bg-indigo-700 rounded-lg mb-6">
           <p className="text-sm opacity-75">Logged in as</p>
           <p className="font-semibold">{user?.name || 'User'}</p>
           <p className="text-xs opacity-75">{user?.email}</p>
-        </div>
+        </div> */}
       </div>
       
       <nav>

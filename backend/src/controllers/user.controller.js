@@ -9,7 +9,29 @@ exports.getAllUsers = async (req, res, next) => {
     
     const users = await User.find(query).select('-password');
     
-    res.status(200).json({ users });
+    // Get projects for each user from Project model if it exists
+    const Project = require('../models/project.model');
+    const enhancedUsers = await Promise.all(users.map(async (user) => {
+      const userData = user.toObject();
+      try {
+        // Find projects where user is a client
+        if (user.role === 'client') {
+          const projects = await Project.find({ clients: user._id });
+          userData.projects = projects.map(project => ({
+            _id: project._id,
+            name: project.name,
+            status: project.status
+          }));
+        }
+        return userData;
+      } catch (err) {
+        console.error(`Error fetching projects for user ${user._id}:`, err);
+        userData.projects = [];
+        return userData;
+      }
+    }));
+    
+    res.status(200).json(enhancedUsers);
   } catch (error) {
     next(error);
   }

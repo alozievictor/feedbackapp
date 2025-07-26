@@ -26,6 +26,10 @@ router.put('/profile', (req, res, next) => {
 router.get('/', isAdmin, getAllUsers);
 router.get('/:id', isAdmin, getUserById);
 router.put('/:id', isAdmin, updateUser);
+router.patch('/:id/status', isAdmin, (req, res, next) => {
+  req.body = { isActive: req.body.isActive };
+  updateUser(req, res, next);
+});
 router.delete('/:id', isAdmin, deleteUser);
 
 module.exports = router;

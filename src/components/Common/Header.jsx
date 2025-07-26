@@ -1,22 +1,22 @@
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { logout } from '../../features/auth/authSlice';
-import { Menu, X, User, LogOut } from 'lucide-react';
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../features/auth/authSlice";
+import { Menu, X, User, LogOut } from "lucide-react";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { user, isAuthenticated } = useSelector(state => state.auth);
+  const { user, isAuthenticated } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleLogout = () => {
     dispatch(logout());
-    navigate('/login');
+    navigate("/login");
   };
 
   return (
-    <nav className="bg-indigo-600">
+    <nav className="bg-indigo-800">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -36,12 +36,14 @@ const Header = () => {
             </button>
           </div>
           <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-            <div className="flex flex-shrink-0 items-center">
-              <Link to="/" className="text-white text-xl font-bold">Rivong</Link>
-            </div>
+            {/* <div className="flex flex-shrink-0 items-center">
+              <Link to="/" className="text-white text-xl font-bold">
+                Rivong
+              </Link>
+            </div> */}
             <div className="hidden sm:ml-6 sm:block">
               <div className="flex space-x-4">
-                {isAuthenticated && (
+                {/* {isAuthenticated && (
                   <>
                     <Link
                       to="/dashboard"
@@ -56,7 +58,7 @@ const Header = () => {
                       Projects
                     </Link>
                   </>
-                )}
+                )} */}
               </div>
             </div>
           </div>
@@ -64,11 +66,15 @@ const Header = () => {
             {isAuthenticated ? (
               <div className="relative ml-3">
                 <div className="flex items-center space-x-3">
-                  <p className="text-white text-sm">{user?.name || 'User'}</p>
+                  <div>
+                    <p className="text-white text-sm">{user?.name || "User"}</p>
+                    <p className="text-xs opacity-75 text-white">{user?.email}</p>
+                  </div>
+
                   <button
                     type="button"
                     onClick={handleLogout}
-                    className="flex items-center text-indigo-200 hover:text-white"
+                    className="flex items-center border border-white rounded-full text-indigo-200 hover:text-white"
                   >
                     <LogOut className="h-5 w-5" />
                     <span className="sr-only">Logout</span>

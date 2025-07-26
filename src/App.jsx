@@ -27,6 +27,7 @@ import FileUpload from './components/FileViewer/FileUpload';
 // Pages
 import LandingPage from './pages/LandingPage';
 import NotFound from './pages/NotFound';
+import { ClientsPage } from './pages/Clients';
 
 const App = () => {
   const { isAuthenticated, user } = useSelector(state => state.auth);
@@ -116,10 +117,17 @@ const App = () => {
                     </ProtectedRoute>
                   } 
                 />
+                <Route 
+                  path="/clients" 
+                  element={
+                    <ProtectedRoute adminOnly={true}>
+                      <ClientsPage />
+                    </ProtectedRoute>
+                  } 
+                />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </main>
-            <Footer />
           </div>
         </div>
       ) : (
