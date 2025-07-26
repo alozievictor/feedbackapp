@@ -37,29 +37,11 @@ const Sidebar = () => {
       showFor: ['admin', 'client']
     },
     {
-      name: 'Upload Files',
-      path: '/upload',
-      icon: <Upload className="w-5 h-5" />,
-      showFor: ['admin']
-    },
-    {
       name: 'Clients',
       path: '/clients',
       icon: <Users className="w-5 h-5" />,
       showFor: ['admin']
     },
-    {
-      name: 'Analytics',
-      path: '/analytics',
-      icon: <BarChart className="w-5 h-5" />,
-      showFor: ['admin']
-    },
-    {
-      name: 'Settings',
-      path: '/settings',
-      icon: <Settings className="w-5 h-5" />,
-      showFor: ['admin', 'client']
-    }
   ];
   
   // Filter navigation items based on user role
