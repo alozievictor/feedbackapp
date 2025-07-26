@@ -125,6 +125,7 @@ const App = () => {
                     </ProtectedRoute>
                   } 
                 />
+                <Route path="/clients" element={<ClientsList />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </main>
