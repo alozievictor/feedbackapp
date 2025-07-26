@@ -50,20 +50,24 @@ const FileViewer = () => {
     if (!newFeedback.trim()) return;
     
     try {
-      await addFeedback({
+      const response = await addFeedback({
         projectId,
         fileId,
-        feedback: {
-          comment: newFeedback,
-          userId: user._id,
-          userName: user.name,
-        },
+        content: newFeedback,
+        coordinates: {
+          x: 0,
+          y: 0,
+          width: 0,
+          height: 0
+        }
       }).unwrap();
       
+      console.log('Feedback submitted successfully:', response);
       // Clear the input after successful submission
       setNewFeedback('');
     } catch (error) {
       console.error('Error adding feedback:', error);
+      alert('Failed to send feedback. Please try again.');
     }
   };
 

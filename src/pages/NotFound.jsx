@@ -16,7 +16,7 @@ const NotFound = () => {
         transition={{ duration: 0.5 }}
         className="text-center"
       >
-        <h1 className="text-9xl font-bold text-indigo-600">404</h1>
+        <h1 className="text-9xl font-bold text-yellow-600">404</h1>
         <h2 className="mt-4 text-3xl font-semibold text-gray-900">Page not found</h2>
         <p className="mt-4 text-gray-600 max-w-md mx-auto">
           Sorry, we couldn't find the page you're looking for. It might have been moved or doesn't exist.
@@ -25,7 +25,7 @@ const NotFound = () => {
         <div className="mt-10">
           <Link
             to="/"
-            className="inline-flex items-center px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700"
+            className="inline-flex items-center px-4 py-2 bg-yellow-600 text-white rounded-md hover:bg-yellow-700"
           >
             Go back home
           </Link>

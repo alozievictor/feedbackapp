@@ -60,7 +60,7 @@ const Sidebar = () => {
   });
 
   return (
-    <div className="bg-indigo-800 text-white w-64 min-h-screen p-4 hidden md:block">
+    <div className="bg-black text-white w-64 min-h-screen p-4 hidden md:block">
       <div className="mb-8">
         <h2 className="text-xl font-bold mb-6">
           {isAdmin ? "Rivong Admin" : "Client Portal"}
@@ -81,8 +81,8 @@ const Sidebar = () => {
                 className={({ isActive }) =>
                   `flex items-center px-4 py-3 rounded-lg transition-colors ${
                     isActive
-                      ? "bg-indigo-600 text-white"
-                      : "text-indigo-100 hover:bg-indigo-700"
+                      ? "bg-yellow-600 text-white"
+                      : "text-indigo-100 hover:bg-gray-700"
                   }`
                 }
               >
@@ -97,15 +97,15 @@ const Sidebar = () => {
       <button
         type="button"
         onClick={handleLogout}
-        className="absolute bottom-28 left-0 w-56 ml-4 p-4 flex items-center space-x-3 rounded-lg text-indigo-100 hover:bg-indigo-600"
+        className="absolute bottom-28 left-0 w-56 ml-4 p-4 flex items-center space-x-3 rounded-lg text-yellow-100 hover:bg-gray-700"
       >
         <LogOut className="h-5 w-5 text-w" />
         <span className="">Logout</span>
       </button>
 
       <div className="absolute bottom-0 left-0 w-64 p-4">
-        <div className="border-t border-indigo-700 pt-4">
-          <p className="text-xs text-indigo-300 text-center">
+        <div className="border-t border-gray-700 pt-4">
+          <p className="text-xs text-yellow-200 text-center">
             Rivong Feedback System
             <br />
             &copy; {new Date().getFullYear()} Rivong
