@@ -12,6 +12,7 @@ import {
   BarChart2,
   Inbox,
   Plus,
+  MessageCircle,
 } from 'lucide-react';
 
 const AdminDashboard = () => {
@@ -211,6 +212,33 @@ const AdminDashboard = () => {
             >
               View all projects
             </Link>
+          </div>
+        </div>
+
+        {/* Feedback Management Section */}
+        <div className="bg-white shadow-md rounded-lg overflow-hidden border border-gray-200 mb-8">
+          <div className="p-6 border-b border-gray-200 flex justify-between items-center">
+            <h2 className="text-lg font-semibold text-gray-900">Recent Feedback</h2>
+            <Link
+              to="/feedback"
+              className="inline-flex items-center text-sm font-medium text-indigo-600 hover:text-indigo-500"
+            >
+              <MessageCircle className="h-4 w-4 mr-1" />
+              Manage All Feedback
+            </Link>
+          </div>
+          <div className="divide-y divide-gray-200">
+            {/* Feedback would be displayed here - for now a placeholder */}
+            <div className="p-6 text-center text-gray-500">
+              <MessageCircle className="h-12 w-12 mx-auto text-gray-400" />
+              <p className="mt-2">View and manage all feedback in the feedback section</p>
+              <Link
+                to="/feedback"
+                className="mt-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
+              >
+                Go to Feedback Management
+              </Link>
+            </div>
           </div>
         </div>
 

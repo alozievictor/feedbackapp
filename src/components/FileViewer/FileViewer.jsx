@@ -33,15 +33,54 @@ const FileViewer = () => {
   const [newFeedback, setNewFeedback] = useState('');
   const [file, setFile] = useState(null);
   
+  // Helper function to ensure URL is properly formatted
+  const formatFileUrl = (url) => {
+    if (!url) return '';
+    
+    // If it's already a full URL, return it as is
+    if (url.startsWith('http')) {
+      return url;
+    }
+    
+    // Otherwise, construct a full URL
+    const baseApiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+    const baseUrl = baseApiUrl.replace(/\/api$/, ''); // Remove '/api' if present
+    
+    // Make sure we don't have double slashes
+    const formattedUrl = url.startsWith('/') 
+      ? `${baseUrl}${url}` 
+      : `${baseUrl}/${url}`;
+      
+    return formattedUrl;
+  };
+
   useEffect(() => {
     // If we have the file in Redux state, use it
     if (currentFile) {
-      setFile(currentFile);
+      console.log("File from Redux state:", currentFile);
+      
+      // Create a copy with properly formatted URL
+      const formattedFile = {
+        ...currentFile,
+        url: formatFileUrl(currentFile.url)
+      };
+      
+      console.log("Formatted file URL:", formattedFile.url);
+      setFile(formattedFile);
     } else if (project) {
       // Otherwise try to find it from the project data
       const foundFile = project.files?.find(f => f._id === fileId);
+      console.log("File from project data:", foundFile);
+      
       if (foundFile) {
-        setFile(foundFile);
+        // Create a copy with properly formatted URL
+        const formattedFile = {
+          ...foundFile,
+          url: formatFileUrl(foundFile.url)
+        };
+        
+        console.log("Formatted file URL:", formattedFile.url);
+        setFile(formattedFile);
       }
     }
   }, [currentFile, project, fileId]);
@@ -117,17 +156,46 @@ const FileViewer = () => {
                 <div className="bg-gray-100 rounded-lg p-2 sm:p-4 flex items-center justify-center" style={{ minHeight: '200px', height: 'calc(30vh + 50px)' }}>
                   {/* File preview based on type */}
                   {file.type?.startsWith('image/') ? (
-                    <img 
-                      src={file.url} 
-                      alt={file.name}
-                      className="max-w-full max-h-full object-contain rounded" 
-                    />
+                    <>
+                      <img 
+                        src={file.url} 
+                        alt={file.name}
+                        className="max-w-full max-h-full object-contain rounded"
+                        onError={(e) => {
+                          console.error("Image failed to load:", file.url);
+                          e.target.onerror = null;
+                          
+                          // Show a placeholder image if the image fails to load
+                          e.target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='3' width='18' height='18' rx='2' ry='2'/%3E%3Ccircle cx='8.5' cy='8.5' r='1.5'/%3E%3Cpolyline points='21 15 16 10 5 21'/%3E%3C/svg%3E";
+                        }}
+                      />
+                      {/* Small download button in corner for mobile accessibility */}
+                      <a 
+                        href={file.url} 
+                        download={file.name}
+                        className="absolute bottom-2 right-2 p-2 bg-white rounded-full shadow-md hover:bg-gray-100"
+                        title="Download image"
+                      >
+                        <Download className="h-4 w-4 text-gray-600" />
+                      </a>
+                    </>
                   ) : file.type === 'application/pdf' ? (
-                    <iframe
-                      src={file.url}
-                      title={file.name}
-                      className="w-full h-[300px] sm:h-[500px]"
-                    />
+                    <div className="relative w-full h-[300px] sm:h-[500px]">
+                      <iframe
+                        src={file.url}
+                        title={file.name}
+                        className="w-full h-full"
+                      />
+                      <a 
+                        href={file.url} 
+                        target="_blank"
+                        rel="noreferrer"
+                        className="absolute top-2 right-2 p-2 bg-white rounded-full shadow-md hover:bg-gray-100"
+                        title="Open PDF in new tab"
+                      >
+                        <Download className="h-4 w-4 text-gray-600" />
+                      </a>
+                    </div>
                   ) : (
                     <div className="text-center">
                       <p className="text-xs sm:text-sm text-gray-500 mb-2 sm:mb-3">Preview not available for this file type</p>
