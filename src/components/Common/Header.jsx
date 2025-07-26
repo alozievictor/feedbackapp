@@ -71,14 +71,14 @@ const Header = () => {
                     <p className="text-xs opacity-75 text-white">{user?.email}</p>
                   </div>
 
-                  <button
+                  {/* <button
                     type="button"
                     onClick={handleLogout}
                     className="flex items-center border border-white rounded-full text-indigo-200 hover:text-white"
                   >
                     <LogOut className="h-5 w-5" />
                     <span className="sr-only">Logout</span>
-                  </button>
+                  </button> */}
                 </div>
               </div>
             ) : (
