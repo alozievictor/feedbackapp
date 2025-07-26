@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { 
   UserPlus, 
@@ -9,7 +10,7 @@ import {
   Trash2, 
   ExternalLink, 
   Edit, 
-  AlertCircle 
+  AlertCircle
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useGetUsersQuery, useDeleteUserMutation, useUpdateUserStatusMutation } from '../../services/user.service';
@@ -169,6 +170,14 @@ const ClientsPage = () => {
                               ? '1 active project' 
                               : `${client.projects?.length || 0} active projects`}
                           </div>
+                          {client.projects && client.projects.length > 0 && (
+                            <div className="mt-1 text-xs">
+                              <span className="text-indigo-600 font-medium">Latest: </span>
+                              {client.projects[0].name.length > 20 
+                                ? client.projects[0].name.substring(0, 20) + '...' 
+                                : client.projects[0].name}
+                            </div>
+                          )}
                         </td>
                         <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                           <span
@@ -215,22 +224,24 @@ const ClientsPage = () => {
       {/* Client Details Modal */}
       <AnimatePresence>
         {isModalOpen && selectedClient && (
-          <div className="fixed inset-0 z-10 overflow-y-auto">
+          <div className="fixed inset-0 z-40 overflow-y-auto">
             <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+              {/* Overlay - lowered z-index to prevent it from covering the modal */}
               <div
-                className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+                className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity z-40"
                 onClick={() => {
                   setIsModalOpen(false);
                   setConfirmDelete(false);
                 }}
               ></div>
 
+              {/* Modal content - increased z-index to appear above the overlay */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.2 }}
-                className="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6"
+                className="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6 relative z-50 border-2 border-indigo-100"
               >
                 {confirmDelete ? (
                   <div>
@@ -328,15 +339,34 @@ const ClientsPage = () => {
                       {selectedClient.projects && selectedClient.projects.length > 0 ? (
                         <ul className="mt-2 divide-y divide-gray-200">
                           {selectedClient.projects.map((project) => (
-                            <li key={project._id} className="py-2 flex justify-between items-center">
-                              <div className="text-sm font-medium text-gray-900">{project.name}</div>
-                              <a
-                                href={`/projects/${project._id}`}
-                                className="ml-2 text-indigo-600 hover:text-indigo-900 flex items-center"
-                              >
-                                <span className="text-sm">View</span>
-                                <ExternalLink className="h-4 w-4 ml-1" />
-                              </a>
+                            <li key={project._id} className="py-3 flex flex-col">
+                              <div className="flex justify-between items-center">
+                                <div className="text-sm font-medium text-gray-900">{project.name}</div>
+                                <Link
+                                  to={`/projects/${project._id}`}
+                                  className="ml-2 text-indigo-600 hover:text-indigo-900 flex items-center"
+                                >
+                                  <span className="text-sm">View Details</span>
+                                  <ExternalLink className="h-4 w-4 ml-1" />
+                                </Link>
+                              </div>
+                              {project.description && (
+                                <p className="text-xs text-gray-500 mt-1 line-clamp-2">{project.description}</p>
+                              )}
+                              <div className="flex items-center mt-1 text-xs text-gray-500">
+                                <span className={`inline-flex rounded-full px-2 text-xs font-semibold leading-5 ${
+                                  project.status === 'completed' 
+                                    ? 'bg-green-100 text-green-800'
+                                    : project.status === 'in-progress'
+                                    ? 'bg-blue-100 text-blue-800'
+                                    : 'bg-yellow-100 text-yellow-800'
+                                }`}>
+                                  {project.status || 'active'}
+                                </span>
+                                <span className="ml-2">
+                                  Last updated: {new Date(project.updatedAt || project.createdAt).toLocaleDateString()}
+                                </span>
+                              </div>
                             </li>
                           ))}
                         </ul>

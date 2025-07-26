@@ -28,6 +28,8 @@ import FileUpload from './components/FileViewer/FileUpload';
 import LandingPage from './pages/LandingPage';
 import NotFound from './pages/NotFound';
 import { ClientsPage } from './pages/Clients';
+import { FeedbackPage } from './pages/Feedback';
+import { FeedbackDetails } from './components/Feedback';
 
 const App = () => {
   const { isAuthenticated, user } = useSelector(state => state.auth);
@@ -125,7 +127,22 @@ const App = () => {
                     </ProtectedRoute>
                   } 
                 />
-                <Route path="/clients" element={<ClientsList />} />
+                <Route 
+                  path="/feedback" 
+                  element={
+                    <ProtectedRoute adminOnly={true}>
+                      <FeedbackPage />
+                    </ProtectedRoute>
+                  } 
+                />
+                <Route 
+                  path="/feedback/:id" 
+                  element={
+                    <ProtectedRoute adminOnly={true}>
+                      <FeedbackDetails />
+                    </ProtectedRoute>
+                  } 
+                />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </main>
@@ -141,7 +158,6 @@ const App = () => {
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </main>
-          <Footer />
         </div>
       )}
     </Router>
