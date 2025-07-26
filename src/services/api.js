@@ -1,7 +1,9 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-// Define our base API URL
-const baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+// Define our base API URL with better fallback mechanism
+const baseUrl = import.meta.env.VITE_API_URL || window.VITE_API_URL || 'http://localhost:5000/api';
+
+console.log("API URL:", baseUrl); // Log the API URL to help with debugging
 
 // Create our API service
 export const api = createApi({
@@ -17,7 +19,19 @@ export const api = createApi({
         headers.set('authorization', `Bearer ${token}`);
       }
       
+      // Add CORS headers to support cross-origin requests
+      headers.set('Access-Control-Allow-Origin', '*');
+      
       return headers;
+    },
+    // Add better error handling
+    responseHandler: async (response) => {
+      if (!response.ok) {
+        const error = await response.text();
+        console.error("API Error:", response.status, error);
+        return Promise.reject({ status: response.status, data: { message: error } });
+      }
+      return response.json();
     },
   }),
   tagTypes: ['Project', 'Feedback', 'User', 'File', 'Message'],

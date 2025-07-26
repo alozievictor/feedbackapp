@@ -37,6 +37,13 @@ const Register = () => {
       navigate('/login');
     } catch (err) {
       console.error('Failed to register:', err);
+      // Display detailed error information in the console to help debugging
+      console.log('Error details:', {
+        status: err.status,
+        data: err.data,
+        message: err.data?.message || 'Unknown error',
+        originalError: err
+      });
     }
   };
 
@@ -142,7 +149,8 @@ const Register = () => {
 
           {error && (
             <div className="text-red-500 text-sm">
-              {error.data?.message || 'Something went wrong. Please try again.'}
+              <p><strong>Error:</strong> {error.data?.message || error.status || 'Something went wrong. Please try again.'}</p>
+              <p className="mt-1">Please check that the backend server is running and accessible.</p>
             </div>
           )}
 
